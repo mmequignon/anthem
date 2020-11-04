@@ -13,7 +13,8 @@ def uninstall(ctx, module_list):
 
     mods = ctx.env['ir.module.module'].search(
         [
-            ('name', 'in', module_list), ("state", "in", ["installed", "to upgrade"]),
+            ('name', 'in', module_list),
+            ("state", "not in", ["uninstalled", "uninstallable"]),
         ]
     )
     try:
